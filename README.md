@@ -21,5 +21,5 @@ Persönliche Bewerbungsunterlagen-Website, erstellt im Rahmen eines Web-Developm
 
 ## Status
 
-Bewerbe mich aktuell um eine Ausbildung als Fachinformatiker für Systemintegration.
+Zurzeit ich nehme Teil im ADA Bootcamp September 2026.
 </end>
