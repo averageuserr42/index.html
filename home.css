@@ -1,0 +1,217 @@
+/* Reset all margins and paddings, and make width/height include padding and border */
+* { box-sizing: border-box; margin: 0; padding: 0; }  /* CSS reset  */
+/* Set full height for the page and hide overflow (no scrollbars on desktop). */
+html, body {
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Chakra Petch', sans-serif;
+    background-color: #050705;
+    color: #d6ffe0;
+}
+/* Fixed top navigation bar: stays at the top even when scrolling.*/
+.topnav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 16px 30px;
+    background: rgba(5, 10, 5, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(57, 255, 20, 0.3);
+    z-index: 10; /* z-index ensures it stays above other content. */
+}
+/* Remove default list markers and turn the ul into a flex container.
+   flex-end pushes the items to the right side with a 30px gap between them. */
+.topnav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.topnav a {
+    display: inline-block;
+    padding: 8px 15px;
+    border: 1px solid rgba(157, 255, 184, 0.45);
+    border-radius: 5px;
+    color: #9dffb8;
+    text-decoration: none;
+    font-size: 15px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.topnav a:hover {
+    background-color: #9dffb8;
+    color: #050705;
+}
+/* Hero section fills the whole screen and centers children.
+   justify-content: center -> horizontally (main axis)
+   align-items: center   -> vertically (cross axis) */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 100px 60px 40px;
+}
+/* Flex container for the two hero panels.
+   align-items: stretch -> both panels have equal height (stretch vertically)
+   justify-content: space-between -> left panel sticks to the left, right panel to the right,
+   with at least 40px gap between them */
+.content-row {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 40px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.panel {
+    border-radius: 18px;
+    padding: 30px;
+    background: rgba(57, 255, 20, 0.05);
+    border: 1px solid rgba(57, 255, 20, 0.35);
+    box-shadow: 0 0 30px rgba(57, 255, 20, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+/* Left panel takes more horizontal space than the right one (1.4 : 1 ratio). */
+.left {
+    flex: 1.4;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+/* Profile photo: fixed 160x160 circle, image covers the circle without distortion, */
+.profile-photo {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #39ff14;
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.4);
+    flex-shrink: 0;
+}
+
+.left h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 26px;
+    color: #7dffa0;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.left p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(214, 255, 224, 0.85);
+    margin-bottom: 8px;
+}
+/* Right panel: takes less horizontal space, centers its content vertically and horizontally */
+.right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+}
+/* Container for skill badges: wraps on small screens, centers items */
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+/* Individual skill badge: pill-shaped, green-tinted background, icon + text */
+.badge {
+    font-size: 13px;
+    padding: 8px 14px;
+    border-radius: 20px;
+    background: rgba(57, 255, 20, 0.08);
+    border: 1px solid rgba(57, 255, 20, 0.3);
+    color: #b9ffcb;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+/* Call-to-action button: green glowing box, scales slightly on hover */
+.cta-btn {
+    display: inline-block;
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 14px 26px;
+    border-radius: 10px;
+    background: rgba(57, 255, 20, 0.15);
+    border: 1px solid #39ff14;
+    color: #d6ffe0;
+    box-shadow: 0 0 18px rgba(57, 255, 20, 0.35);
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+/* Hover effect for CTA button: slight grow and stronger glow */
+.cta-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 26px rgba(57, 255, 20, 0.55);
+}
+/* Mobile styles: enable scrolling, stack columns vertically, center text */
+@media (max-width: 700px) {
+    html, body { overflow: auto; }
+    .hero { height: auto; padding: 100px 20px 40px; }
+    .content-row { flex-direction: column; }
+    .left { flex-direction: column; text-align: center; }
+}
+/* Contact page: centering wrapper for the whole viewport */
+.center-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 100px 20px 40px;
+}
+/* Contact panel: narrow card with centered text */
+.contact-panel {
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+}
+/* Contact panel heading */
+.contact-panel h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 24px;
+    color: #7dffa0;
+    margin-bottom: 24px;
+}
+/* Each contact row: icon + text, centered, separated by subtle border */
+.contact-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 15px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(57, 255, 20, 0.15);
+}
+/* Remove border from the last contact row */
+.contact-row:last-child {
+    border-bottom: none;
+}
+/* Contact icon color and fixed width */
+.contact-row i {
+    color: #39ff14;
+    width: 20px;
+    text-align: center;
+}
+/* Contact link styling */
+.contact-row a {
+    color: #d6ffe0;
+    text-decoration: none;
+}
+/* Contact link hover */
+.contact-row a:hover {
+    color: #39ff14;
+}
